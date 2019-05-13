@@ -65,7 +65,24 @@ export default {
       // throw {message: 'custom test'}
     }
   },
+  mounted () {
+    // 使 jscore 引入 es6.number.constructor
+    const test = Number.isFinite(123)
+    console.log(test)
 
+    // 使 jscore 引入 es7.promise.finally
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 3000)
+    }).finally(() => {
+      console.log('test')
+      wx.showToast({
+        title: 'promise.finally',
+        icon: 'none'
+      })
+    })
+  },
   created () {
     // let app = getApp()
   }
